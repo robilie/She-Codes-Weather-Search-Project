@@ -1,0 +1,93 @@
+.container {
+  width: fit-content;
+  height: fit-content;
+  padding: 30px;
+}
+
+h1 {
+  font-family: "KoHo", sans-serif;
+  font-weight: lighter;
+  font-size: 70px;
+  color: rgb(255, 255, 0);
+}
+
+h2:first-letter {
+  text-transform: capitalize;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "KoHo", sans-serif;
+  color: white;
+}
+
+h3:first-letter {
+  text-transform: capitalize;
+}
+h4 {
+  font-weight: lighter;
+}
+h6.date-time {
+  text-transform: uppercase;
+  font-weight: lighter;
+}
+
+h6.feels-like {
+  text-transform: uppercase;
+  font-weight: lighter;
+  color: white;
+  right: -120px;
+  position: relative;
+}
+#recBox {
+  border-radius: 10px;
+  background: linear-gradient(#923cb5, #000000);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  width: fit-content;
+  height: fit-content;
+  padding: 30px;
+}
+
+.daily-temp {
+  width: 189.67px;
+  height: 85px;
+}
+.high-low {
+  width: 60px;
+  height: 60px;
+  position: relative;
+  top: 20px;
+  color: rgb(255, 255, 0);
+}
+.alter-ego {
+  color: rgb(255, 255, 0);
+}
+
+.temp-link {
+  text-decoration: none;
+  color: rgb(255, 255, 0);
+}
+.temp-link:hover {
+  color: white;
+  cursor: default;
+}
+.weather-size {
+  width: 187px;
+}
+.card-img-top {
+  width: 40px;
+  display: block;
+  margin: 0 auto;
+}
+
+p.card-text {
+  text-align: center;
+}
+
+.coded-by {
+  text-align: center;
+}
