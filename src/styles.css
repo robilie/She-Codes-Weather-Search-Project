@@ -84,6 +84,10 @@ h6.feels-like {
   margin: 0 auto;
 }
 
+.card-group {
+  width: 100%;
+}
+
 p.card-text {
   text-align: center;
 }
