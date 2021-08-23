@@ -81,7 +81,7 @@ function displayWeatherCondition(response) {
   let iconElement = document.querySelector("#weather-image-today");
   iconElement.setAttribute(
     "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
   
@@ -149,7 +149,7 @@ celsiusTemperature.addEventListener("click", switchToCelsius);
 function displayForecast(response) {
   let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
-  let forecastHTML = `<div class="card-group">`;
+  let forecastHTML = `<div class="card-group" id="forecast">`;
 
   forecast.forEach(function (forecastDay, index) {
     if (index > 0 && index < 6) {
