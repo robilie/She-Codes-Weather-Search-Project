@@ -34,6 +34,23 @@ function formatDate() {
 
 formatDate();
 
+
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
+}
+
+function getForecast(coordinates) {
+  let apiKey = "f3e9b7fb8cbac59f9b2f8b3d635b8d32";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+
+  axios.get(apiUrl).then(displayForecast);
+}
+
+
+
 function displayWeatherCondition(response) {
   document.querySelector("h2").innerHTML = response.data.name;
   document.querySelector("h1").innerHTML = `${Math.round(
@@ -67,6 +84,8 @@ function displayWeatherCondition(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+  
+  getForecast(response.data.coord);
 }
 
 function search(city) {
@@ -124,3 +143,35 @@ function switchToCelsius(event) {
 
 let celsiusTemperature = document.querySelector("#celsius-link");
 celsiusTemperature.addEventListener("click", switchToCelsius);
+
+
+
+function displayForecast(response) {
+  let forecast = response.data.daily;
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="card-group">`;
+
+  forecast.forEach(function (forecastDay, index) {
+    if (index > 0 && index < 6) {
+      forecastHTML =
+        forecastHTML +
+        ` <div class="card">
+            <div class="card-header">${formatDay(forecastDay.dt)}</div>
+            <div class="card-body">
+              <blockquote class="blockquote mb-0">
+                <p><img src="https://openweathermap.org/img/wn/${
+                  forecastDay.weather[0].icon
+                }@2x.png" alt="" width="42"/></p>
+                <footer class="next-day-forecast" id="next-day"><br />${Math.round(
+                  forecastDay.temp.day
+                )}° </footer>
+              </blockquote>
+            </div>
+          </div>`;
+    }
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+
+}
